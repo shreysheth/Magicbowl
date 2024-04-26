@@ -42,6 +42,8 @@ const addRecipe = async (req, res) => {
       cookTime,
       ingredients,
       method,
+      likes,
+      saves
     } = req.body;
 
     const recipeAdded = await Recipe.create({
@@ -54,6 +56,8 @@ const addRecipe = async (req, res) => {
       cookTime,
       ingredients,
       method,
+      likes,
+      saves
     });
 
     res
@@ -79,6 +83,8 @@ const updateRecipe = async (req, res) => {
       cookTime,
       ingredients,
       method,
+      likes,
+      saves
     } = req.body;
 
     const recipeExists = await Recipe.findById(req.params.id);
@@ -97,6 +103,8 @@ const updateRecipe = async (req, res) => {
       cookTime,
       ingredients,
       method,
+      likes,
+      saves
     });
     res
       .status(200)

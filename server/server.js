@@ -4,8 +4,10 @@ const app = express();
 const authRoutes = require("./routes/auth-routes");
 const recipeRoutes = require("./routes/recipe-routes");
 const connectDb = require("./config/db");
+const cors = require('cors');
 
 app.use(express.json());
+app.use(cors());
 
 connectDb().then(() => {
   app.use("/api/auth", authRoutes);

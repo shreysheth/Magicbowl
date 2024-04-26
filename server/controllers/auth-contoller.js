@@ -40,6 +40,8 @@ const register = async (req, res) => {
       profilePicture,
       role,
       isApproved,
+      likedRecipes,
+      savedRecipes
     } = req.body;
 
     const userExists = await User.findOne({ username });
@@ -55,6 +57,8 @@ const register = async (req, res) => {
       profilePicture,
       role,
       isApproved,
+      likedRecipes,
+      savedRecipes
     });
 
     res.status(201).json({

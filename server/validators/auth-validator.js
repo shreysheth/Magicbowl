@@ -21,6 +21,10 @@ const signUpSchema = z.object({
     isApproved: z
     .boolean()
     .default(false),
+    likedRecipes: z
+    .array().default([]),
+    savedRecipes: z
+    .array().default([]),
 })
 
 module.exports = signUpSchema;

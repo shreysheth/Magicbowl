@@ -19,6 +19,8 @@ const recipeValSchema = z.object({
     cookTime: timeSchema,
     ingredients: z.array(z.string()).nonempty("ingredients cannot be empty"),
     method: z.array(z.string()).nonempty("method cannot be empty"),
+    likes: z.number().default(0),
+    saves: z.number().default(0),
 })
 
 module.exports = recipeValSchema

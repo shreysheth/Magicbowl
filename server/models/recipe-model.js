@@ -40,6 +40,14 @@ const recipeSchema = new Schema({
         type: [{type: String}],
         required: true,
     },
+    likes: {
+        type: Number,
+        default: 0,
+    },
+    saves: {
+        type: Number,
+        default: 0,
+    }
 })
 
 const Recipe = new model("Recipe", recipeSchema);

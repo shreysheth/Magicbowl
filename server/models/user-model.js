@@ -40,8 +40,15 @@ const userSchema = new mongoose.Schema({
   isApproved: {
     type: Boolean,
     default: false,
+  },
+  likedRecipes: {
+    type: Array,
+    default: []
+  },
+  savedRecipes: {
+    type: Array,
+    default: []
   }
-
 },  
 {
     timestamps: true
