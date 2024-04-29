@@ -31,19 +31,21 @@ export const Home = () => {
 
   return (
     <>
-      <div className="container-fluid m-2">
+      <div className="container-fluid mt-3 mb-2">
         <div className="row">
           {recipes.map((recipe) => (
-            <div key={recipe._id} className="col">
+            <div key={recipe._id} className="col mb-3" style={{cursor: "default"}}>
               <div className="card" style={{ width: "18rem" }}>
                 <img src={recipe.image} className="card-img-top" alt="..." />
                 <div className="card-body">
-                  <h6 className="card-title mb-2">{recipe.name}</h6>
+                  <h6 className="card-title mb-2 text-truncate" title={recipe.name}>{recipe.name}</h6>
                   <p className="card-subtitle mb-2 text-body-secondary">
-                    by {recipe.author}
+                    by {recipe.author} | {recipe.isVegetarian ? <i className="fas fa-leaf text-success"></i> : <i className="fas fa-drumstick-bite text-danger"></i>}
                   </p>
-                  <p className="card-text overflow-hidden">{recipe.description}</p>
-                  <button onClick={() => handleRecipeClick(recipe._id)} className="btn btn-primary">Read more</button>
+                  <p className="card-text text-truncate" title={recipe.description}>{recipe.description}</p>
+                  <button onClick={() => handleRecipeClick(recipe._id)} className="btn btn-primary">Open Recipe</button>
+                  <button onClick={() => handleRecipeClick(recipe._id)} className="btn btn-primary ms-2"><i className="bi bi-heart"></i></button>
+                  <button onClick={() => handleRecipeClick(recipe._id)} className="btn btn-primary ms-2"><i className="bi bi-bookmark"></i></button>
                 </div>
               </div>
             </div>

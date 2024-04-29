@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import {ThemeToggler} from './ThemeToggler';
+import { ThemeToggler } from "./ThemeToggler";
 
 export const Navbar = () => {
   const [showMenu, setShowMenu] = useState(true);
@@ -20,11 +20,11 @@ export const Navbar = () => {
   return (
     <header className="p-2">
       <div className="container mt-2">
-        <div className="row">
+        <div className="row ">
           <nav className="navbar navbar-expand-lg bg-body-tertiary p-2 rounded">
             <div className="col">
               <NavLink
-                className="navbar-brand d-flex justify-content-start ms-1"
+                className="navbar-brand d-flex justify-content-start ms-1 text-primary fw-bold"
                 to="/"
               >
                 Magic Bowl
@@ -85,7 +85,7 @@ export const Navbar = () => {
               </div>
             </div>
             <div className="col d-flex justify-content-end me-1">
-            <ThemeToggler />
+              <ThemeToggler />
               <NavLink to="/login" className="btn btn-outline-primary">
                 Login
               </NavLink>
