@@ -7,7 +7,7 @@ import { Account } from "./pages/account";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Dashboard } from "./pages/dashboard";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/navbar";
 
 
 const App = () => {

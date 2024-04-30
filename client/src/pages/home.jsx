@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import BackToTopButton from "../components/backToTop";
 export const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);
@@ -20,8 +21,6 @@ export const Home = () => {
 
   const handleRecipeClick = (id) => {
     try {
-        // const response = axios.get(`${url}/recipe/${id}`);
-        // console.log(response.data);
         setSelectedRecipeId(id);
         console.log(selectedRecipeId);
     } catch (error) {
@@ -52,6 +51,7 @@ export const Home = () => {
           ))}
         </div>
       </div>
+      <BackToTopButton />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { ThemeToggler } from "./ThemeToggler";
+import { ThemeToggler } from "./themeToggler";
 
 export const Navbar = () => {
   const [showMenu, setShowMenu] = useState(true);
@@ -79,6 +79,21 @@ export const Navbar = () => {
                       to="/search"
                     >
                       Search
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink
+                      style={({ isActive, isTransitioning }) => {
+                        return {
+                          fontWeight: isActive ? "bold" : "",
+                          color: isActive ? "#007bff" : "",
+                          viewTransitionName: isTransitioning ? "slide" : "",
+                        };
+                      }}
+                      className="nav-link"
+                      to="/dashboard"
+                    >
+                      Dashboard
                     </NavLink>
                   </li>
                 </ul>

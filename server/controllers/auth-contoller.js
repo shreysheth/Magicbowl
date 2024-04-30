@@ -1,6 +1,21 @@
 const User = require("../models/user-model");
 const bcrypt = require("bcrypt");
 
+const getAllChefs = async (req, res) => {
+  try {
+    const chefExist = await User.find({role: "chef"});
+    if (!chefExist) {
+      res.status(400).json({ message: "No chefs found" });
+    }
+    res.status(200).json(chefExist);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "oops! something went wrong", error: error });
+  }
+};
+
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -72,4 +87,4 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = { login, register };
+module.exports = { login, register, getAllChefs };
