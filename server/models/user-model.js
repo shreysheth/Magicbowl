@@ -48,6 +48,10 @@ const userSchema = new mongoose.Schema({
   savedRecipes: {
     type: Array,
     default: []
+  },
+  recipes: {
+    type: Array,
+    default: []
   }
 },  
 {

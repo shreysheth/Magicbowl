@@ -25,6 +25,8 @@ const signUpSchema = z.object({
     .array().default([]),
     savedRecipes: z
     .array().default([]),
+    recipes: z
+    .array().default([]),
 })
 
 module.exports = signUpSchema;

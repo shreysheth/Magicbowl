@@ -1,5 +1,8 @@
+const Recipe = require("../models/recipe-model");
 const User = require("../models/user-model");
 const bcrypt = require("bcrypt");
+const recipeValSchema = require("../validators/recipe-validator");
+const { default: mongoose } = require("mongoose");
 
 const getAllChefs = async (req, res) => {
   try {
@@ -15,6 +18,38 @@ const getAllChefs = async (req, res) => {
       .json({ message: "oops! something went wrong", error: error });
   }
 };
+
+const getRecipesByChefId = async (req, res) => {
+  try {
+    const chefExist = await User.findById(req.params.id);
+    if (!chefExist) {
+      res.status(400).json({ message: "No chefs found" });
+    }
+    const recipeIds = chefExist.recipes?.map(recipe => new mongoose.Types.ObjectId(recipe));
+    const chefRecipes = await Recipe.find({ _id: {$in: recipeIds}})
+    res.status(200).json(chefRecipes);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "oops! something went wrong", error: error });
+  }
+};
+
+const getChefById = async (req, res) => {
+  try {
+    const chefExists = await User.findById(req.params.id);
+    if (!chefExists) {
+      res.status(404).json({ message: "chef not found" });
+    }
+    res.status(200).json(chefExists);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "oops! something went wrong", error: error });
+  }
+}
 
 const login = async (req, res) => {
   try {
@@ -56,7 +91,8 @@ const register = async (req, res) => {
       role,
       isApproved,
       likedRecipes,
-      savedRecipes
+      savedRecipes,
+      recipes
     } = req.body;
 
     const userExists = await User.findOne({ username });
@@ -73,7 +109,8 @@ const register = async (req, res) => {
       role,
       isApproved,
       likedRecipes,
-      savedRecipes
+      savedRecipes,
+      recipes
     });
 
     res.status(201).json({
@@ -87,4 +124,4 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = { login, register, getAllChefs };
+module.exports = { login, register, getAllChefs, getChefById, getRecipesByChefId };
